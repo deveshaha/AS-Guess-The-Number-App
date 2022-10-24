@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Guess The Number</string>
+    <string name="adivina_title">Guess the secret number!</string>
+    <string name="intentos_txt">Lives: %1$d</string>
+    <string name="adivinar_1_100_txt">Guess the secret number between 1 and 100</string>
+    <string name="adivina_hint">Guess the number</string>
+    <string name="prueba_numero_txt">Try this number</string>
+    <string name="numero_pequeno">The number you are looking for is greater than the one you entered, please try again</string>
+    <string name="numero_grande">The number you are looking for is less than the one you entered, please try again</string>
+    <string name="numero_acertado">Congratulations, you guessed the number!</string>
+    <string name="numero_agotado">Damn! you ran out of lives the number was: %1$d</string>
+</resources>
