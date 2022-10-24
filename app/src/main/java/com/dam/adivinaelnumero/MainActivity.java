@@ -37,14 +37,15 @@ public class MainActivity extends AppCompatActivity {
                 if (number.checkNumber(num)) {
                     txt_adivina.setText(R.string.numero_acertado);
                     fondo.setBackgroundColor(getResources().getColor(R.color.acertado_backgrund));
-                    btn_prueba.setEnabled(false);
+                    newNumber();
                 } else {
                     number.intentos--;
                     txt_intentos.setText(String.format(getString(R.string.intentos_txt), number.intentos));
                     if (number.intentos == 0) {
                         txt_adivina.setText(String.format(getString(R.string.numero_agotado), number.randnum));
                         fondo.setBackgroundColor(getResources().getColor(R.color.no_acertado_background));
-                        btn_prueba.setEnabled(false);
+                        newNumber();
+
                     } else {
                         if (num > number.randnum) {
                             txt_adivina.setText(R.string.numero_grande);
@@ -59,6 +60,21 @@ public class MainActivity extends AppCompatActivity {
 
         btn_prueba.setOnClickListener(listener);
 
+    }
+
+    private void newNumber() {
+        Button btn_new = findViewById(R.id.btn_prueba);
+        btn_new.setText(R.string.new_number);
+        btn_new.setVisibility(View.VISIBLE);
+        System.out.println("El número es: " + number.randnum);
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                number = new Number();
+                recreate();
+            }
+        };
+        btn_new.setOnClickListener(listener);
     }
 
 }

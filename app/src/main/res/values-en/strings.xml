@@ -9,4 +9,5 @@
     <string name="numero_grande">The number you are looking for is less than the one you entered, please try again</string>
     <string name="numero_acertado">Congratulations, you guessed the number!</string>
     <string name="numero_agotado">Damn! you ran out of lives the number was: %1$d</string>
+    <string name="new_number">Play again</string>
 </resources>
