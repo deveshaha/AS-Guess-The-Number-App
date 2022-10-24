@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Adivina el numero</string>
     <string name="adivina_title">¡Adivina el número!</string>
-    <string name="intentos_txt">Intentos restantes: %1$s</string>
+    <string name="intentos_txt">Intentos restantes: %1$d</string>
     <string name="adivinar_1_100_txt">Debes Adivinar el numero secreto entre 1 y 100</string>
     <string name="adivina_hint">Adivina el numero</string>
     <string name="prueba_numero_txt">Prueba este numero</string>

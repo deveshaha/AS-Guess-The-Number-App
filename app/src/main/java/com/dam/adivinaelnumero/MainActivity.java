@@ -12,11 +12,11 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static int MAX = 100;
-    public static int MIN = 1;
+    static Number number = new Number();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -26,49 +26,40 @@ public class MainActivity extends AppCompatActivity {
         Button btn_prueba = findViewById(R.id.btn_prueba);
         RelativeLayout fondo = findViewById(R.id.main);
 
-        int randnum = getRandnum();
-        System.out.println(randnum);
+
+        System.out.println("El número es: " + number.randnum);
+        txt_intentos.setText(String.format(getString(R.string.intentos_txt), number.intentos));
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int intentos = 5;
-                txt_intentos.setText(String.format(getString(R.string.intentos_txt), String.valueOf(randnum)));
+                int num = Integer.parseInt(edit_txt.getText().toString());
 
-                while (intentos > 0 ) {
-                    System.out.println("Numero de intentos: " + intentos);
-
-                    if (Integer.parseInt(edit_txt.getText().toString()) == randnum) {
-                        txt_adivina.setText(R.string.numero_acertado);
-                        fondo.setBackgroundColor(R.color.acertado_backgrund);
-                    } else if (Integer.parseInt(edit_txt.getText().toString()) > randnum){
-                        txt_adivina.setText(R.string.numero_pequeno);
-                        intentos--;
-                    } else if (Integer.parseInt(edit_txt.getText().toString()) < randnum){
-                        txt_adivina.setText(R.string.numero_grande);
-                        txt_intentos.setText(String.format(getString(R.string.intentos_txt), String.valueOf(intentos)));
-                        intentos--;
-                    }
-
-                    if (intentos == 0){
-                        txt_adivina.setText(String.format(getString(R.string.numero_agotado), randnum));
-                        fondo.setBackgroundColor(R.color.no_acertado_background);
+                if (number.checkNumber(num)) {
+                    txt_adivina.setText(R.string.numero_acertado);
+                    fondo.setBackgroundColor(getResources().getColor(R.color.acertado_backgrund));
+                    btn_prueba.setEnabled(false);
+                } else {
+                    number.intentos--;
+                    txt_intentos.setText(String.format(getString(R.string.intentos_txt), number.intentos));
+                    if (number.intentos == 0) {
+                        txt_adivina.setText(String.format(getString(R.string.numero_agotado), number.randnum));
+                        fondo.setBackgroundColor(getResources().getColor(R.color.no_acertado_background));
+                        btn_prueba.setEnabled(false);
+                    } else {
+                        if (num > number.randnum) {
+                            txt_adivina.setText(R.string.numero_grande);
+                        } else {
+                            txt_adivina.setText(R.string.numero_pequeno);
+                        }
                     }
                 }
-
             }
+
         };
 
         btn_prueba.setOnClickListener(listener);
 
     }
-
-    private int getRandnum() {
-        Random rd = new Random();
-        int randnum = rd.nextInt(MAX - MIN + 1) + MIN;
-        System.out.println(randnum);
-        return randnum;
-    }
-
 
 }
