@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         Button btn_prueba = findViewById(R.id.btn_prueba);
         RelativeLayout fondo = findViewById(R.id.main);
 
-
         System.out.println("El número es: " + number.randnum);
         txt_intentos.setText(String.format(getString(R.string.intentos_txt), number.intentos));
 
