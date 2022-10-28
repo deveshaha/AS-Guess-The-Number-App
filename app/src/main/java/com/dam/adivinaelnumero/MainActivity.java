@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -32,28 +33,36 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int num = Integer.parseInt(edit_txt.getText().toString());
 
-                if (number.checkNumber(num)) {
-                    txt_adivina.setText(R.string.numero_acertado);
-                    fondo.setBackgroundColor(getResources().getColor(R.color.acertado_backgrund));
-                    newNumber();
-                } else {
-                    number.intentos--;
-                    txt_intentos.setText(String.format(getString(R.string.intentos_txt), number.intentos));
-                    if (number.intentos == 0) {
-                        txt_adivina.setText(String.format(getString(R.string.numero_agotado), number.randnum));
-                        fondo.setBackgroundColor(getResources().getColor(R.color.no_acertado_background));
+                if (edit_txt.getText().toString().isEmpty()){
+                    Toast.makeText(MainActivity.this, R.string.num_oblig, Toast.LENGTH_LONG).show();
+                } else{
+                    int num = Integer.parseInt(edit_txt.getText().toString());
+                    if (number.checkNumber(num)) {
+                        txt_adivina.setText(R.string.numero_acertado);
+                        fondo.setBackgroundColor(getResources().getColor(R.color.acertado_backgrund));
                         newNumber();
-
                     } else {
-                        if (num > number.randnum) {
-                            txt_adivina.setText(R.string.numero_grande);
+                        number.intentos--;
+                        txt_intentos.setText(String.format(getString(R.string.intentos_txt), number.intentos));
+                        if (number.intentos == 0) {
+                            txt_adivina.setText(String.format(getString(R.string.numero_agotado), number.randnum));
+                            fondo.setBackgroundColor(getResources().getColor(R.color.no_acertado_background));
+                            newNumber();
+
                         } else {
-                            txt_adivina.setText(R.string.numero_pequeno);
+                            if (num > number.randnum) {
+                                txt_adivina.setText(R.string.numero_grande);
+                            } else {
+                                txt_adivina.setText(R.string.numero_pequeno);
+                            }
                         }
                     }
+
                 }
+
+
+
             }
 
         };

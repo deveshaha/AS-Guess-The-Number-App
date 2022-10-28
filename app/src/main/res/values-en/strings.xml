@@ -10,4 +10,5 @@
     <string name="numero_acertado">Congratulations, you guessed the number!</string>
     <string name="numero_agotado">Damn! you ran out of lives the number was: %1$d</string>
     <string name="new_number">Play again</string>
+    <string name="num_oblig">You should enter a number</string>
 </resources>

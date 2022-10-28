@@ -11,4 +11,5 @@
     <string name="numero_agotado">¡Mala suerte! has agotado todos tus intentos el número era: %1$d</string>
     <string name="resultado_txt">00</string>
     <string name="new_number">Jugar otra vez</string>
+    <string name="num_oblig">Debes introdcuir un número</string>
 </resources>
